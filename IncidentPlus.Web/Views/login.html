@@ -1,0 +1,39 @@
+<div class="col-md-6 col-md-offset-3">
+    <div class="alert alert-info" style="margin-top:50px">
+        <h2 class="text-center text-capitalize" >
+            IncidenPlus
+            <small>Iniciar Sesión</small>
+        </h2>
+    </div>
+    <div ng-show="displayMessage.state" class="alert {{displayMessage.class}} alert-dismissible">
+       <!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+        <strong>{{displayMessage.message}}</strong>
+        {{displayMessage.description}}
+    </div>
+    <div class="login">
+        <form name="frmLoginForm" novalidate>
+           <div class="form-group">
+               <div class="input-group">
+                   <span class="input-group-addon">
+                       <i class="fa fa-user"></i>
+                   </span>
+                   <input type="text" class="form-control" ng-model="login.userName" id="username" name="username" placeholder="Usuario" />
+               </div>
+           </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input type="password" class="form-control" ng-model="login.password" id="password" name="password" placeholder="Clave" />
+                </div>
+            </div>
+            <div class="form-group" style="text-align:center">
+                <button class="btn btn-primary" ng-click="login()">
+                    <i class="fa fa-sign-in fa-fw"></i>
+                    Iniciar Sesión
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

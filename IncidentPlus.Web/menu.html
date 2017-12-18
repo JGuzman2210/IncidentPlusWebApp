@@ -1,0 +1,52 @@
+<nav ng-hide="!authentication.isAuth" class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					  <span class="sr-only">Toggle navigation</span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					</button>
+            <a class="navbar-brand" href="#!/">IncidenPlus</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul ng-show="authentication.role == 'Admin'" class="nav navbar-nav pull-left">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adminitración <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ng-class="projects"><a href="#!/projects">
+                            <i class="fa fa-industry fa-fw"></i>
+                            Proyectos</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-class="users"><a href="#!users">
+                            <i class="fa fa-group fa-fw"></i>
+                            Usuarios</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li ng-class="home"><a href="#!/">Inicio</a></li>
+                <li ng-class="incident"><a href="#!/incident">Incidencia</a></li>
+                <li ng-class="history"><a href="#!/history">Historial</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" 
+                       data-toggle="dropdown" role="button" 
+                       aria-haspopup="true" aria-expanded="false">{{authentication.name    }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">
+                            <i class="fa fa-user-o fa-fw"></i>
+                            Perfil</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="" ng-click="logout()">
+                            <i class="fa fa-sign-out fa-fw"></i>
+                            Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>

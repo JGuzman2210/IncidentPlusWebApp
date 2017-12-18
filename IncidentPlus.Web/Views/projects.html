@@ -1,0 +1,106 @@
+﻿<div ng-hide="errorMessage.isError" class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Projectos</h4> 
+        <button class="btn btn-success" ng-click="openProjectForm()">
+            <i class="fa fa-plus fa-fw"></i>
+            Nuevo Projecto
+        </button>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Projecto</th>
+                    <th>Descripción</th>
+                    <th>Fecha Inicio</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="cursor:pointer" ng-class="{'success':indexRow == project.Id}" ng-repeat="project in projects" ng-click="displayFeatures(project)">
+                    <td ng-bind="$index+1"> </td>
+                    <td ng-bind="project.Name"></td>
+                    <td ng-bind="project.Description"></td>
+                    <td ng-bind="project.Created | date:'dd/MM/yyyy'"></td>
+                    <td ng-bind="project.State == 1?'Activo':'Inactivo'"></td>
+                    <td>
+                        <button ng-show="project.State == 1" ng-click="processEditProject(project.Id)" class="btn btn-sm btn-primary">
+                            <i class="fa fa-pencil fa-fw"></i>
+                        </button>
+                        <button ng-show="project.State == 1" ng-click="processDisableProject(project.Id)" class="btn btn-sm btn-danger">
+                            <i class="fa fa-lock fa-fw"></i>
+                        </button>
+                        <button ng-show="project.State == 0" ng-click="processEnableProject(project.Id)" class="btn btn-sm btn-warning">
+                            <i class="fa fa-unlock fa-fw"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer" ng-show="currentProject">
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-success" ng-disabled="currentProject.State == 0" ng-click="openCategoryForm()">
+                    <i class="fa fa-plus fa-fw"></i>
+                    Categoría
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-success" ng-disabled="currentProject.State == 0">
+                    <i class="fa fa-plus fa-fw"></i>
+                    Nivel
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered table-condensed">
+                    <caption>
+                        <h4>Categoría | <small>{{currentProject.Name}}</small></h4>
+
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="category in currentProject.categories ">
+                            <td class="text-primary">{{category.Name}}</td>
+                            <td>{{category.Description}}</td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-bordered table-condensed">
+                    <caption><h4>Niveles | <small>{{currentProject.Name}}</small></h4></caption>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="level in currentProject.levels">
+                            <td class="text-success">{{level.Name}}</td>
+                            <td>{{level.Description}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-danger" ng-show="errorMessage.isError">
+    {{errorMessage.error}}
+</div>
+

@@ -1,0 +1,24 @@
+*{
+    font-size:18px;
+}
+
+.login {
+    height: auto;
+    border: solid #2464bd;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+    .login form {
+        padding: 5px;
+    }
+
+.displyaScroll {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 300px;
+}
+
+td:last-child:hover{
+    background-color: white;
+}

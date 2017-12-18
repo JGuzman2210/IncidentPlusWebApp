@@ -1,0 +1,45 @@
+﻿<!--Project Form Modal-->
+<script type="text/ng-template" id="modalProjectForm.html">
+    <div class="modal-header">
+        <h3>Registro Projecto</h3>
+    </div>
+    <form ng-submit="processProjectForm()">
+        <div class="modal-body">
+            <div class="form-group">
+                <input ng-model="project.name" class="form-control" type="text" name="name"
+                       maxlength="50" placeholder="Nombre Projecto" />
+            </div>
+            <div class="form-group">
+                <textarea ng-model="project.description" cols="5" rows="5" class="form-control"
+                          maxlength="100" placeholder="Descripción"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info" ng-disabled="btnStatus">Registrar</button>
+            <button type="button" class="btn btn-danger" ng-click="close()">Cancelar</button>
+        </div>
+    </form>
+</script>
+
+<!-- Category Form Modal-->
+<script type="text/ng-template" id="modalCategoryForm.html">
+    <div class="modal-header">
+        <h3>Registro Categoría</h3>
+    </div>
+    <form ng-submit="processCategoryForm()">
+        <div class="modal-body">
+            <div class="form-group">
+                <input ng-model="category.name" class="form-control" type="text" name="name"
+                       maxlength="50" placeholder="Nombre Categoría" />
+            </div>
+            <div class="form-group">
+                <textarea ng-model="category.description" cols="5" rows="5" class="form-control"
+                          maxlength="100" placeholder="Descripción"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info" ng-disabled="btnStatus">Registrar</button>
+            <button type="button" class="btn btn-danger" ng-click="close()">Cancelar</button>
+        </div>
+    </form>
+</script>

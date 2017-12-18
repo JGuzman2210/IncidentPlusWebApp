@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="es-do" ng-app="inciden-plus" ng-controller="IndexCtrl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>IncidenPlus - Sistema Gestión de Reporte</title>
+    <!-- BootStrap Css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/customCss.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/loading-bar.min.css"/>
+
+    <!-- Animate CSS-->
+    <link rel="stylesheet" href="css/animate.css"/>
+</head>
+
+<body>
+    <div ng-include="'menu.html'"></div>
+    <div class="container">
+        <div>
+            <ng-view></ng-view>
+        </div>
+    </div>
+    <div ng-include="'Views/_customModal.html'"></div>
+
+
+
+    <!--Importando Archivos JS -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/app.controllers.js"></script>
+    <script src="js/app/app.services.js"></script>
+    <script src="js/app/app.routing.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <!-- jQuery -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- BootStrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Angular Loading Bar-->
+    <script src="js/loading-bar.min.js"></script>
+
+    <!-- Angular UI Bootstrap-->
+    <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+</body>
+
+</html>
