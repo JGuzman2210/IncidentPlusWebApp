@@ -13,8 +13,8 @@ namespace IncidentPlus.API
         private static String PARAM_DISPLAY_DATA = "data";
         public static void Register(HttpConfiguration config)
         {
-            /*var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);*/
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
             // Web API configuration and services
             //config.Formatters.Remove(config.Formatters.XmlFormatter);
             //config.Formatters.Add(config.Formatters.JsonFormatter);

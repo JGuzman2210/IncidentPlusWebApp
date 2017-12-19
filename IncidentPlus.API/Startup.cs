@@ -19,8 +19,6 @@ namespace IncidentPlus.API
     {
         public void Configuration(IAppBuilder app)
         {
-
-            
             app.UseCors(CorsOptions.AllowAll);//Enable Cors
            
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()

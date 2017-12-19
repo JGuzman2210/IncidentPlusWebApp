@@ -1,4 +1,5 @@
-app.factory('authService', ['$http', '$q', 'URLAPI', 'localStorageService', function($http, $q, URLAPI, localStorageService) {
+app
+    .factory('authService', ['$http', '$q', 'URLAPI', 'localStorageService', function($http, $q, URLAPI, localStorageService) {
         var _authUser = {}
 
         var _login = function(userLogin) {
@@ -94,6 +95,9 @@ app.factory('authService', ['$http', '$q', 'URLAPI', 'localStorageService', func
         var _updateProject = function(projectUpdated) {
             return $http({
                 url: URLAPI.URL + '/api/project',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 method: 'put',
                 data: projectUpdated
             })

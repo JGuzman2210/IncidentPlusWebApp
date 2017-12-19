@@ -1,5 +1,5 @@
 app
-    .controller("IndexCtrl", ['$scope', 'authService', '$location', function($scope, authService, $location) {
+    .controller("IndexCtrl", ['$scope', 'authService', '$location', '$log', function($scope, authService, $location, $log) {
 
         $scope.setActive = function(option) {
             $scope.home = '';
@@ -16,20 +16,20 @@ app
         $scope.logout = function() {
             authService.logout();
             $location.path('/login');
-            
+
         }
     }])
-    .controller("HomeCtrl", ['$scope', function($scope) {
+    .controller("HomeCtrl", ['$scope', '$log', function($scope, $log) {
         $scope.setActive('home');
     }])
-    .controller("IncidentCtrl", ['$scope', function($scope) {
+    .controller("IncidentCtrl", ['$scope', '$log', function($scope, $log) {
         $scope.setActive('incident');
     }])
-    .controller("HistoryCtrl", ['$scope', 'authService', function($scope) {
+    .controller("HistoryCtrl", ['$scope', 'authService', '$log', function($scope, authService, $log) {
         $scope.setActive('history');
 
     }])
-    .controller('LoginCtrl', ['$scope', 'authService', '$location', 'cfpLoadingBar', function($scope, authService, $location, cfpLoadingBar) {
+    .controller('LoginCtrl', ['$scope', 'authService', '$location', 'cfpLoadingBar', '$log', function($scope, authService, $location, cfpLoadingBar, $log) {
 
         if (authService.authUser.isAuth)
             return $location.path('/')
@@ -70,27 +70,16 @@ app
         }
 
     }])
-    .controller('ProjectsCtrl', ['$scope', 'projectService', '$location', '$uibModal', '$route', function($scope, projectService, $location, $uibModal, $route) {
+    .controller('ProjectsCtrl', ['$scope', 'projectService', '$location', '$uibModal', '$route', '$log', function($scope, projectService, $location, $uibModal, $route, $log) {
         $scope.setActive('projects');
         $scope.errorMessage = {};
         $scope.projects = {};
-        /*
-            var getAllProjects = function () {
-                projectService.getAllProjects().then(function (success) {
-                    $scope.projects = success.data;
 
-                }, function (error) {
-                    $scope.projects = [];
-                    $location.path('/errorcode/' + error.status);
-                });
-            }*/
-        var getAllProjects =  function() {
-             projectService.getAllProjects()
+        var getAllProjects = function() {
+            projectService.getAllProjects()
                 .then((response) => {
                     $scope.projects = response.data;
                 }).catch((error) => console.log(error));
-
-
         }
         var getAllCategoriesByProjectId = function(projectID) {
             projectService.getAllCategoriesByProjectId(projectID).then(function(success) {
@@ -199,10 +188,10 @@ app
         getAllProjects();
 
     }])
-    .controller('UsersCtrl', ['$scope', function($scope) {
+    .controller('UsersCtrl', ['$scope', '$log', function($scope, $log) {
         $scope.setActive('users');
     }])
-    .controller('ErrorCodeCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    .controller('ErrorCodeCtrl', ['$scope', '$routeParams', '$log', function($scope, $routeParams, $log) {
         var codeError = $routeParams.codeError;
         $scope.message = '';
         console.log('VALOR ' + codeError)
@@ -219,8 +208,8 @@ app
                 break;
         }
     }])
-    .controller('ProcessProjectFormModal', ['$scope', '$uibModalInstance', 'projectService', 'projectId',
-        function($scope, $uibModalInstance, projectService, projectId) {
+    .controller('ProcessProjectFormModal', ['$scope', '$uibModalInstance', 'projectService', 'projectId', '$log',
+        function($scope, $uibModalInstance, projectService, projectId, $log) {
             $scope.project = {};
             var setBtnStatus = function(state) {
                 $scope.btnStatus = state;
@@ -275,16 +264,15 @@ app
             }
         }
     ])
-    .controller('ProcessCategoryFormModal', ['$scope', '$uibModalInstance', 'categoryService', 'currentProjectID',
-        function($scope, $uibModalInstance, categoryService, currentProjectID) {
+    .controller('ProcessCategoryFormModal', ['$scope', '$uibModalInstance', 'categoryService', 'currentProjectID', '$log',
+        function($scope, $uibModalInstance, categoryService, currentProjectID, $log) {
             $scope.category = {};
 
-            var setBtnS,tatus = function(state) {
+            var setBtnS, tatus = function(state) {
                 $scope.btnStatus = state;
             }
 
             $scope.processCategoryForm = function() {
-                setBtnStatus(true)
                 $scope.category.State = 1;
                 $scope.category.ProjectID = currentProjectID;
                 categoryService.addCategory($scope.category).then(function(success) {
@@ -292,9 +280,7 @@ app
                         alert('Categoría creada satisfactoriamente')
                         $uibModalInstance.close();
                     }
-                    setBtnStatus(false)
                 }, function(error) {
-                    setBtnStatus(false)
                     alert(error.data.Message);
                 });
             }
