@@ -14,7 +14,7 @@ namespace IncidentPlus.API
         public static void Register(HttpConfiguration config)
         {
             var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
+           // config.EnableCors(cors);
             // Web API configuration and services
             //config.Formatters.Remove(config.Formatters.XmlFormatter);
             //config.Formatters.Add(config.Formatters.JsonFormatter);

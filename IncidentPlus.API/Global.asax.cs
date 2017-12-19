@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IncidentPlus.API.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
@@ -13,8 +14,9 @@ namespace IncidentPlus.API
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            HttpConfiguration config = GlobalConfiguration.Configuration;
-            IncidentPlus.API.App_Start.FiltrerConfig.Register(config);
+            IncidentPlus.API.App_Start.FiltrerConfig.Register(GlobalConfiguration.Configuration);
+            CorsConfig.RegisterCors(GlobalConfiguration.Configuration);
+
             
         }
     }
