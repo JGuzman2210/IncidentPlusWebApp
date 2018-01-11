@@ -18,7 +18,12 @@ namespace IncidentPlus.Entity.Entities
 
         public int ProjectID { get; set; }
 
+        [Column("DefaultLevel")]
+        public bool IsDefault { get; set; }
+
+        #region RelationShip
         [ForeignKey("ProjectID")]
         public Project Project { get; set; }
+        #endregion
     }
 }

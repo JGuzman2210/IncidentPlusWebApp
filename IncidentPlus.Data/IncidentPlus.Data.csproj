@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CategoryRepository\CategoryRepository.cs" />
     <Compile Include="ContextDB\IncidencPlusDBContext.cs" />
+    <Compile Include="LevelRepository\LevelRepository.cs" />
     <Compile Include="Migrations\201712061948185_FirstMigrationAddUserAndRolTable.cs" />
     <Compile Include="Migrations\201712061948185_FirstMigrationAddUserAndRolTable.Designer.cs">
       <DependentUpon>201712061948185_FirstMigrationAddUserAndRolTable.cs</DependentUpon>
@@ -67,10 +68,19 @@
     <Compile Include="Migrations\201712130304454_AddLevelEntity.Designer.cs">
       <DependentUpon>201712130304454_AddLevelEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712281735554_AddIsDefaultPropertyToEntityLevel.cs" />
+    <Compile Include="Migrations\201712281735554_AddIsDefaultPropertyToEntityLevel.Designer.cs">
+      <DependentUpon>201712281735554_AddIsDefaultPropertyToEntityLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712281825018_DeleteUserTypePropertyFromUserEntity.cs" />
+    <Compile Include="Migrations\201712281825018_DeleteUserTypePropertyFromUserEntity.Designer.cs">
+      <DependentUpon>201712281825018_DeleteUserTypePropertyFromUserEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectRepository\ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="RolRepository\RolRepository.cs" />
     <Compile Include="UserRepository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712130304454_AddLevelEntity.resx">
       <DependentUpon>201712130304454_AddLevelEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712281735554_AddIsDefaultPropertyToEntityLevel.resx">
+      <DependentUpon>201712281735554_AddIsDefaultPropertyToEntityLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712281825018_DeleteUserTypePropertyFromUserEntity.resx">
+      <DependentUpon>201712281825018_DeleteUserTypePropertyFromUserEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

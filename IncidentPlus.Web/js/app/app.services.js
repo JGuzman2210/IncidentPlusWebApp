@@ -1,5 +1,6 @@
 app
-    .factory('authService', ['$http', '$q', 'URLAPI', 'localStorageService', function($http, $q, URLAPI, localStorageService) {
+    .factory('authService', ['$http', '$q', 'URLAPI', 'localStorageService', 
+        function($http, $q, URLAPI, localStorageService) {
         var _authUser = {}
 
         var _login = function(userLogin) {
@@ -72,27 +73,31 @@ app
         var _getAllProjects = function() {
             return $http.get(URLAPI.URL + '/api/projects');
         }
-        var _getAllCategoriesByProjectId = function(id) {
+
+        var _getAllCategoriesByProjectId = function (id) {
             return $http.get(URLAPI.URL + '/api/project/' + id + '/categories')
         }
-        var _getAllLevelsByProjectId = function(id) {
+
+        var _getAllLevelsByProjectId = function (id) {
             return $http.get(URLAPI.URL + '/api/project/' + id + '/levels')
         }
-        var _addProject = function(project) {
+
+        var _addProject = function (project) {
             return $http({
                 url: URLAPI.URL + '/api/project',
                 method: 'post',
                 data: project
             });
-
         }
-        var _getProjectById = function(projectId) {
+
+        var _getProjectById = function (projectId) {
             return $http({
                 url: URLAPI.URL + '/api/project/' + projectId,
                 method: 'get'
             });
         }
-        var _updateProject = function(projectUpdated) {
+
+        var _updateProject = function (projectUpdated) {
             return $http({
                 url: URLAPI.URL + '/api/project',
                 headers: {
@@ -102,13 +107,15 @@ app
                 data: projectUpdated
             })
         }
-        var _deleteProject = function(projectId) {
+
+        var _deleteProject = function (projectId) {
             return $http({
                 url: URLAPI.URL + '/api/project/' + projectId,
                 method: 'delete'
             })
         }
-        var _enableProject = function(projectId) {
+
+        var _enableProject = function (projectId) {
             return $http({
                 url: URLAPI.URL + '/api/project/' + projectId + '/enable',
                 method: 'get'
@@ -139,12 +146,39 @@ app
             addCategory: _addCategory
         }
     }])
-    .factory('httpInterceptor', ['$location', '$q', 'localStorageService', function($location, $q, localStorageService) {
+    .factory('levelService', ['$http', '$q', 'URLAPI', function ($http,$q,URLAPI) {
+        var _addLevel = function (level) {
+            return $http({
+                url: URLAPI.URL + '/api/level',
+                method: 'post',
+                data: level
+            });
+        }
+        return {
+            addLevel:_addLevel
+        }
+    }])
+    .factory('userService', ['$http', '$q', 'URLAPI', function ($http, $q, URLAPI) {
+        var _getAllUsers = function () {
+            return $http.get(URLAPI.URL + '/api/users');
+        }
 
+        return {
+            getAllUsers :_getAllUsers
+        }
+    }])
+    .factory('rolService', ['$http', '$q', 'URLAPI', function ($http, $q, URLAPI) {
+        var _getAllRoles = function () {
+            return $http.get(URLAPI.URL + '/api/roles');
+        }
+        return {
+            getAllRoles:_getAllRoles
+        }
+    }])
+    .factory('httpInterceptor', ['$location', '$q', 'localStorageService', function($location, $q, localStorageService) {
 
         var _request = function(config) {
             var authToken = localStorageService.get('userAuthorization');
-
 
             if (authToken) {
                 config.headers = config.headers || {};

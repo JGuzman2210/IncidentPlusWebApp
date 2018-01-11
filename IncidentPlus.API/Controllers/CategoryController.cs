@@ -39,7 +39,7 @@ namespace IncidentPlus.API.Controllers
             }
             catch
             {
-                return Json(new { error = "Occurred an error while add the project" });
+                return Json(new { error = "Occurred an error while add the category" });
             }
         }
     }

@@ -9,7 +9,7 @@ namespace IncidentPlus.Data
 {
     public abstract class GenericRepository<T> where T : Entity.Entities.BaseEntity
     {
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             using (var db = new ContextDB.IncidencPlusDBContext())
             {
@@ -18,7 +18,7 @@ namespace IncidentPlus.Data
             }
         }
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             using (var db = new ContextDB.IncidencPlusDBContext())
             {
@@ -36,7 +36,7 @@ namespace IncidentPlus.Data
             }
         }
 
-        public T FindById(int id)
+        public virtual T FindById(int id)
         {
             using (var db = new ContextDB.IncidencPlusDBContext())
             {
@@ -44,7 +44,7 @@ namespace IncidentPlus.Data
             }
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
             using (var db = new ContextDB.IncidencPlusDBContext())
             {
@@ -64,7 +64,7 @@ namespace IncidentPlus.Data
             }
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             using (var db = new ContextDB.IncidencPlusDBContext())
             {
@@ -73,7 +73,7 @@ namespace IncidentPlus.Data
             }
         }
 
-        public void Enable(int id)
+        public virtual void Enable(int id)
         {
             using (var db = new ContextDB.IncidencPlusDBContext())
             {

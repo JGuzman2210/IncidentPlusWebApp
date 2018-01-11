@@ -43,3 +43,82 @@
         </div>
     </form>
 </script>
+
+<!-- Level Form Modal-->
+<script type="text/ng-template" id="modalLevelForm.html">
+    <div class="modal-header">
+        <h3>Registro Level</h3>
+    </div>
+    <form ng-submit="processLevelForm()">
+        <div class="modal-body">
+            <div class="form-group">
+                <input ng-model="level.name" class="form-control" type="text" name="name"
+                       maxlength="50" placeholder="Nombre Nivel" />
+            </div>
+            <div class="form-group">
+                <textarea ng-model="level.description" cols="5" rows="5" class="form-control"
+                          maxlength="100" placeholder="Descripción"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="checkbox-inline text-primary" style="font-weight:bold">
+                    <input type="checkbox" ng-model="level.isDefault" class="checkbox"/>
+                    Nivel por Defecto
+                </label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info" ng-disabled="btnStatus">Registrar</button>
+            <button type="button" class="btn btn-danger" ng-click="close()">Cancelar</button>
+        </div>
+    </form>
+</script>
+
+<!-- New User Form Modal-->
+<script type="text/ng-template" id="modalNewUserForm.html">
+    <div class="modal-header">
+        <h3>Nuevo Usuario</h3>
+    </div>
+    <form ng-submit="processLevelForm()">
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input id="name" type="text" class="form-control"/>
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon">
+                    @
+                </span>
+                <input type="email" class="form-control" placeholder="Email"/>
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-user fa-fw"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Usuario" />
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-key fa-fw"></i>
+                </span>
+                <input type="password" class="form-control" placeholder="Clave" />
+            </div>
+            <div class="input-group form-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-key fa-fw"></i>
+                </span>
+                <input type="password" class="form-control" placeholder="Confirmar Clave" />
+            </div>
+            <div class="form-group">
+                <label>Tipo de Usuario</label>
+                <select class="form-control" ng-model="currentUser.rol" ng-options="rol.Name as rol.Name for rol in roles" ng-change="processSelect()">
+                    <option value="">Seleccione</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info" ng-disabled="btnStatus">Registrar</button>
+            <button type="button" class="btn btn-danger" ng-click="close()">Cancelar</button>
+        </div>
+    </form>
+</script>

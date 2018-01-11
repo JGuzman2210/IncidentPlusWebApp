@@ -25,9 +25,6 @@ namespace IncidentPlus.Entity.Entities
 
         [Required, StringLength(100)]
         public string Password { get; set; }
-
-        [Required]
-        public UserType UserType{ get; set; }
         #endregion
 
         #region RelationShip

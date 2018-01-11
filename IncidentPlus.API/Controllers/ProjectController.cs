@@ -1,13 +1,7 @@
-﻿using IncidentPlus.API.App_Start;
-using IncidentPlus.Data.ProjectRepository;
+﻿using IncidentPlus.Data.ProjectRepository;
 using IncidentPlus.Entity.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace IncidentPlus.API.Controllers
 {
@@ -41,32 +35,6 @@ namespace IncidentPlus.API.Controllers
                 return NotFound();
                
             return Ok(result);
-        }
-
-        [Route("project/{id:int}/categories")]
-        [HttpGet]
-        public IHttpActionResult GetCategoriesByProjectId(int id)
-        {
-            var categories = _projectRepo.GetCategoriesByProjectID(id);
-            if(categories == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(categories);
-        }
-
-        [Route("project/{id:int}/levels")]
-        [HttpGet]
-        public IHttpActionResult GetLevelsByProjectId(int id)
-        {
-            var levels = _projectRepo.GetLevelsByProjectID(id);
-            if (levels == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(levels);
         }
 
         [Route("project")]
@@ -135,6 +103,32 @@ namespace IncidentPlus.API.Controllers
             {
                 return Json(new { error = "Occurred an error while delete the project" });
             }
+        }
+
+        [Route("project/{id:int}/categories")]
+        [HttpGet]
+        public IHttpActionResult GetCategoriesByProjectId(int id)
+        {
+            var categories = _projectRepo.GetCategoriesByProjectID(id);
+            if (categories == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(categories);
+        }
+
+        [Route("project/{id:int}/levels")]
+        [HttpGet]
+        public IHttpActionResult GetLevelsByProjectId(int id)
+        {
+            var levels = _projectRepo.GetLevelsByProjectID(id);
+            if (levels == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(levels);
         }
 
         [Route("project/{id:int}/enable")]

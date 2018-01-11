@@ -49,7 +49,7 @@
                 </button>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-success" ng-disabled="currentProject.State == 0">
+                <button class="btn btn-success" ng-disabled="currentProject.State == 0" ng-click="openLevelForm()">
                     <i class="fa fa-plus fa-fw"></i>
                     Nivel
                 </button>
@@ -89,7 +89,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="level in currentProject.levels">
+                        <tr ng-repeat="level in currentProject.levels" ng-class="{'warning':level.IsDefault==true}">
                             <td class="text-success">{{level.Name}}</td>
                             <td>{{level.Description}}</td>
                         </tr>

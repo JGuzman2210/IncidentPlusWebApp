@@ -1,1 +1,50 @@
-﻿Im a user page
+﻿<button class="btn btn-success animated fadeIn" ng-click="openNewUserForm()">
+    <i class="fa fa-plus fa-fw"></i>
+    Nuevo
+
+</button>
+<hr />
+<div class="panel panel-primary animated fadeIn">
+    <div class="panel-heading">
+        Listado de Usuario
+        <div style="float:right" class="form-inline">
+
+            <span style="display:inline-block">Filtrar por Tipo de Usuario</span>
+            <select class="form-control" ng-model="rol" ng-options="rol.Name as rol.Name for rol in roles" ng-change="processSelect()">
+                <option value="">Seleccione</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="panel-body">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Usuario</th>
+                <th>Tipo Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="cursor:pointer" ng-repeat="user in userList | filter:rol">
+                <td>{{$index+1}}</td>
+                <td ng-bind="user.Name"></td>
+                <td ng-bind="user.Email"></td>
+                <td ng-bind="user.UserName"></td>
+                <td>
+                    {{user.Rol.Description}}
+                    <span class="text-info">
+                        [ {{user.Rol.Name}} ]
+                    </span>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<pre>
+{{rol}}
+</pre>
