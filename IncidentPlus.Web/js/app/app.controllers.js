@@ -223,8 +223,6 @@ app
                 controller: 'ProcessUserFormModal',
             });
             modal.result.then(function () { //Execute when press ok button
-             
-
             }, function (data) { //Execute when press cancel button
 
             }).catch((error) => $log.error('Error: ', error));
@@ -356,7 +354,10 @@ app
             $scope.roles = successDataRol.data;
         })
 
-
+        $scope.processUserForm = function () {
+            alert('Procesando formulario de usuario');
+            return false;
+        }
         $scope.close = function () {
             $uibModalInstance.dismiss('cancel');
         }
